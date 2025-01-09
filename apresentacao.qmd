@@ -1,0 +1,510 @@
+---
+title: "Novo Modelo de Ações Não Orçamentárias do PPA 2024-2027"
+title-slide-attributes:
+    data-background-image: marcacores.jpg
+    data-background-size: cover
+    data-background-opacity: "0.2"
+author: "SAES/CGPEA/COPEG"
+date:  today
+date-format: "DD/MM/YYYY"
+format:
+  revealjs: 
+    slide-number: true
+    transition: slide
+#    chalkboard: 
+#      buttons: false
+    preview-links: true
+    embed-resources: true
+    logo: logo.png
+#    logo: logo-tilburg-university-square.png
+    css: lecture.css
+    footer: SEPLAN
+#bibliography: references.bib
+---
+
+# Planejamento Estratégico MPO
+
+## Planejamento Estratégico
+
+-   Nome: Novo Modelo de Ações Não Orçamentárias do PPA 2024-2027
+-   Objetivo: Qualificar as informações de cadastro das ações não orçamentárias do PPA 2024-2027 e aperfeiçoar a captação das informações de monitoramento destas ações no SIOP.
+-  Líderes do Projeto: SAES e SPLA
+
+## Planejamento Estratégico
+
+![](planejamento%20estratégico.png)
+
+## Planejamento Estratégico
+
+```{dot}
+#| echo: false
+digraph metas {
+    rankdir=TB;  // Orientação de cima para baixo
+    bgcolor="#f9f9f9"; // Cor de fundo do gráfico
+
+    // Definindo estilos globais
+    node [shape=box, style=filled, fontname="Arial", fontsize=16];
+    edge [color="#264653", penwidth=2];
+
+    // Nós principais
+    A [label="Metas PE", fillcolor="#F4A261", fontcolor="white"];
+    B [label="Estudo/Relatório", fillcolor="#2A9D8F", fontcolor="white"];
+    C [label="Alterações do SIOP", fillcolor="#2A9D8F", fontcolor="white"];
+
+    // Conexões
+    A -> B;
+    A -> C;
+}
+```
+
+
+# Estudo
+
+## Objetivo
+
+-   **Objetivos**: Fazer uma análise situacional e propor melhorias nos atributos das ações não orçamentárias no PPA 2024-2027.
+- Rediscutir as ações não orçamentárias.
+
+## Escopo do Estudo
+
+```{dot}
+#| echo: false
+#| 
+digraph escopo {
+    // Configuração geral
+    rankdir=TB;  // Orientação de cima para baixo
+    bgcolor="#f9f9f9";  // Cor de fundo do gráfico
+    splines=true;  // Conexões suaves
+
+    // Estilos globais
+    node [shape=box, style=filled, fontname="Arial", fontsize=16];
+    edge [color="#264653", penwidth=2];
+
+    // Nó principal
+    A [label="Escopo do Estudo", fillcolor="#F4A261", fontcolor="white", fontsize=20, fontweight=bold];
+
+    // Nós filhos
+    B [label="Subsídios\nTributários", fillcolor="steelblue", fontcolor="white"];
+    C [label="Subsídios\nCreditícios", fillcolor="steelblue", fontcolor="white"];
+    D [label="Créditos de\nInstituições\nFinanceiras\nOficiais\nde Fomento", fillcolor="steelblue", fontcolor="white"];
+    E [label="Projetos com recusos de\nOrganismo Internacinais", fillcolor="steelblue", fontcolor="white"];
+    F [label="Projetos com recursos\nPrivados", fillcolor="steelblue", fontcolor="white"];
+     G [label="Projetos com recursos de\nparaestatais", fillcolor="steelblue", fontcolor="white"];
+
+    // Conexões
+    A -> B [label=""];
+    A -> C [label=""];
+    A -> D [label=""];
+    A -> E [label=""];
+    A -> F [label=""];
+    A -> G [label=""];
+    
+
+}
+```
+
+
+
+
+
+## Diagnóstico Inicial
+
+-   Políticas públicas: Falta de transparência e monitoramento
+-   Impacto Econômico: Misallocation e ampliação de desigualdades
+-   Impacto Fiscal: não arrecadação de receitas potenciais
+-   PPA: Não há uma unidade metodológica
+
+# Ações Não Orçamentárias no PPA
+
+## Definição
+
+-   "As ações não orçamentárias representam recursos públicos não constantes do Orçamento Geral da União, mas que financiam políticas públicas e contribuem para o alcance dos objetivos dos programas do PPA."
+
+- *A Reconstrução do planejamento nacional : inovações e desafios do PPA 
+2024-2027*
+
+
+
+## Histórico PPA
+
+```{ojs}
+
+data = [
+  { Tipo: "Crédito IF", Qtd: 129, PPA: "PPA 2016-2019" },
+  { Tipo: "Outro", Qtd: 16, PPA: "PPA 2016-2019" },
+  { Tipo: "Disp. Globais", Qtd: 16, PPA: "PPA 2016-2019" },
+  { Tipo: "Subsídio Tributário", Qtd: 205, PPA: "PPA 2016-2019" },
+  { Tipo: "Crédito IF", Qtd: 46, PPA: "PPA 2020-2023" },
+  { Tipo: "Outro", Qtd: 6, PPA: "PPA 2020-2023" },
+  { Tipo: "Subsídio Creditício", Qtd: 22, PPA: "PPA 2020-2023" },
+  { Tipo: "Subsídio Tributário", Qtd: 215, PPA: "PPA 2020-2023" },
+  { Tipo: "Crédito IF", Qtd: 49, PPA: "PPA 2024-2027" },
+  { Tipo: "Inv. sem previsão PLOA", Qtd: 12, PPA: "PPA 2024-2027" },
+  { Tipo: "Subsídio Creditício", Qtd: 21, PPA: "PPA 2024-2027" },
+  { Tipo: "Subsídio Tributário", Qtd: 134, PPA: "PPA 2024-2027" }
+]
+
+// Filtro para PPA
+viewof filtroPPA = Inputs.select(
+  [...new Set(data.map(d => d.PPA))],
+  { label: "", value: "PPA 2024-2027" }
+)
+
+// Filtra os dados conforme seleção
+dadosFiltrados = data.filter(d => d.PPA === filtroPPA)
+
+// Calcula a soma total para o PPA selecionado
+somaTotal = dadosFiltrados.reduce((acc, d) => acc + d.Qtd, 0)
+
+// Gráfico Horizontal com Texto da Soma
+Plot.plot({
+  marks: [
+    Plot.barX(dadosFiltrados, { 
+      y: "Tipo", 
+      x: "Qtd", 
+      fill: "steelblue", 
+      sort: { y: "x", reverse: true }, 
+      tip: true
+    }),
+    Plot.ruleX([0]), // Linha base
+    Plot.text([{
+      y: dadosFiltrados.length - 1, // Coloca no final do eixo Y
+      x: somaTotal, // Valor total
+      text: `Total: ${somaTotal}`,
+    }], { 
+      x: "x", 
+      y: "y", 
+      textAnchor: "end", 
+      dx: -10, 
+      fill: "black", 
+      fontSize: 16, 
+      fontWeight: "bold"
+    })
+  ],
+  title: `Total: ${somaTotal}`,
+  marginLeft: 200,
+  marginBottom: 30,
+  width: 800,
+  height: 500,
+  y: { label: null },
+  x: { label: "Qtd", grid: true, ticks: 6 },
+  style: { fontFamily: "Arial, sans-serif", fontSize: "17px", background: "#fafafa", title: { fontSize: "11px" }  }
+  
+})
+```
+
+## Ações por Programas PPA 2024-2027
+
+```{ojs}
+
+// Importando Observable Plot
+import { Plot } from "@observablehq/plot"
+
+// Carregando dados JSON exportados do R
+dados = FileAttachment("dados.json").json()
+
+// Criando o gráfico com ordenação decrescente
+Plot.plot({
+  marks: [
+    Plot.barY(dados, {
+      x: d => d.Programa,
+      y: d => d["Quantidade de Ações"],
+      sort: { x: "y", order: "descending" },
+      fill: "steelblue"
+    }),
+    Plot.text(
+      dados,
+      {
+        x: d => d.Programa,
+        y: d => d["Quantidade de Ações"],
+        text: d => d["Quantidade de Ações"],
+        dy: -5
+      }
+    )
+  ],
+  x: { label: "", tickRotate: -45 },
+  y: { label: "", grid: true },
+  style: { width: 800, height: 600 },
+  caption: "Fonte: SIOP.Elaboração Própria"
+})
+
+```
+
+
+## TOP 10
+
+
+![Fonte: Siop. Elaboração própria](top 10.png)
+
+## TOP 10 Valores
+
+![Fonte SIOP. Elaboração Própria](top10valores.png)
+
+
+## Ações por órgão responsável
+
+```{r}
+
+
+# Carregando pacotes
+library(plotly)
+
+# Dados fornecidos
+dados2 <- data.frame(
+  Ministerio = c("MIDR", "MDIC", "MCID", "INV", "MCTI", "MDS", 
+                 "MAPA", "MINC", "MS", "MME", "MPS", "MEC", 
+                 "MDHC", "MDA", "MTUR", "OUTROS"),
+  Quantidade = c(46, 21, 17, 12, 11, 11, 10, 10, 9, 9, 7, 7, 6, 5, 5, 30)
+)
+
+# Ordenando os dados em ordem decrescente
+dados2 <- dados2[order(-dados2$Quantidade), ]
+
+# Criando o gráfico de barras invertido com Plotly e adicionando rótulos
+fig <- plot_ly(
+  data = dados2,
+  y = ~reorder(Ministerio, Quantidade),  # Ordem decrescente
+  x = ~Quantidade,
+  type = 'bar',
+  orientation = 'h',  # Barras horizontais
+  marker = list(color = 'green'),  # Cor das barras
+  text = ~Quantidade,  # Adiciona os valores como texto
+  textposition = 'outside'  # Posição dos rótulos fora das barras
+) %>%
+  layout(
+    title = "",
+    xaxis = list(title = "qtd"),
+    yaxis = list(title = ""),
+    margin = list(l = 100, r = 20, t = 50, b = 50),  # Ajuste de margens
+    annotations = list(
+      list(
+        x = 0.5,
+        y = -0.15,
+        text = "Fonte: Siop. Elaboração Própria.",
+        showarrow = FALSE,
+        xref = 'paper',
+        yref = 'paper',
+        xanchor = 'center',
+        yanchor = 'top',
+        font = list(size = 12, color = "black")
+      )
+    )
+  )
+
+# Exibindo o gráfico
+fig
+
+```
+
+
+
+## Tipo de Ação Não Orçamentária
+
+![Fonte Siop. Elaboração própria](Imagem3.png)
+
+## Valores Totais Previstos por tipo (2024-2027)
+
+![Fonte Siop. Elaboração própria](Imagem4.png)
+
+# Subsídios Tributários
+
+## Conceito
+
+-   Instrumento de política pública para:
+    -   Reduzir custos ou preços
+    -   Promover incentivos econômicos e sociais.
+-   Formas:
+    -   Isenções, deduções, alíquotas reduzidas, regimes especiais
+
+## Classificação por Base de Incidência
+
+| Base de Incidência | Exemplos         |
+|--------------------|------------------|
+| **Renda**          | IRPF, IRPJ, CSLL |
+| **Consumo**        | IPI              |
+| **Patrimônio**     | ITR              |
+
+## Mensuração e Monitoramento
+
+-   **Metodologia da Receita Federal do Brasil (RFB):**
+    -   Tributos Federais
+    -   Perda de arrecadação (ex-post)
+-   **Publicação de Referência:**
+    -   Demonstrativos de Gastos Tributários (DGT)
+
+## Desafios 
+
+-   Complexidade devido à ausência de governança dos benefícios tributários
+-   Limitações metodológicas: caso das imunidades tributárias
+
+## Oportunidades
+
+-   Inclusão de novos atributos no SIOP, com base no DGT
+- Articulação com os ministérios para avaliação de resultado das ações não orçamentárias vinculadas às suas políticas públicas (processo gradual)
+
+
+------------------------------------------------------------------------
+
+# Subsídios Creditícios
+
+## Definição e Contexto
+
+-   **Subsídio creditício**:
+    -   Relaciona-se ao custo de oportunidade para o Tesouro Nacional (TN).
+    -   Ocorre quando o governo concede crédito a taxas mais baixas que o custo de captação.
+    -   [Contra-exemplo]{style="color: red;"}: equalização de juros
+-   **Importância**:
+    -   Apoio ao desenvolvimento de setores estratégicos.
+    -   Instrumento de gasto indireto de política pública.
+
+## Evolução e Destaques
+
+-   **Período 2003-2023**:
+    -   Variabilidade maior em relação aos subsídios tributários do que os gastos tributários.
+    -   Destaque para 2018: [**Subsídios negativos**]{style="color: red;"} devido à redução do custo de captação e outros fatores.
+-   **Principais Programas**:
+    -   Fundos Constitucionais (FNE, FNO, FCO).
+    -   FIES.
+    -   Financiamentos específicos (FDA, FDNE, PRONAF, entre outros).
+
+## Evolução dos Benefícios Creditícios
+
+![Fonte SIOP. Elaboração própria](Rplot_sc.png)
+
+# Subsídios Creditícios no PPA 2024-2027
+
+## Contexto no PPA
+
+-   **Distribuição dos recursos**:
+    -   Subsídios Creditícios: R\$ 97,3 bilhões (2,5% do total de valores previstos)
+
+## Histórico
+
+![Fonte SIOP. Elaboração Própria](imagem%206%20valores%20previsto%20por%20ano.png)
+
+
+# Créditos de Instituições Financeiras Oficiais de Fomento
+
+## Definição e Importância
+
+-   **Créditos oficiais**: recursos concedidos por bancos públicos como BNDES, BB, CEF, entre outros.
+-   **Objetivos**: apoiar setores estratégicos (infraestrutura, habitação, inovação tecnológica, micro e pequenas empresas).
+    -   Promover o desenvolvimento regional e a redução de desigualdades.
+-   **Fontes de Recursos**: recursos próprios, FGTS, FAT.
+
+# Crédito Oficial no PPA 2024-2027
+
+## Distribuição e Concentração {.scrollable}
+-   **Quantidade de Ações Não Orçamentárias**:
+
+| Fonte de Recursos                         | Qtd Ações Não-Orçamentárias | %|
+|------------------------------------------|---------------------------------------|-------------|
+| Outros                                    | 12                                    | 24.5%       |
+| Direcionado - BNDES                       | 10                                    | 20.4%       |
+| Direcionado - FNE                         | 7                                     | 14.3%       |
+| Direcionado - FNO                         | 7                                     | 14.3%       |
+| Direcionado - FGTS                        | 5                                     | 10.2%       |
+| Caixa                                     | 2                                     | 4.1%        |
+| Direcionado - FCO                         | 2                                     | 4.1%        |
+| Direcionado - Poupança Rural e Dep. Vista | 1                                     | 2.0%        |
+| Fungetur                                  | 1                                     | 2.0%        |
+| Livre - Outros                            | 1                                     | 2.0%        |
+| Recursos Livres                           | 1                                     | 2.0%        |
+
+## Distribuição e Concentração {.scrollable}
+-   **Valores Previstos**:
+  
+| Fonte de Recursos                         | Valor Total (Bilhões)   | % |
+|------------------------------------------|------------------------|-------------|
+| Livre - Outros                            | R$ 355.0                | 20.9%       |
+| Direcionado - BNDES                       | R$ 307.82               | 18.1%       |
+| Direcionado - FGTS                        | R$ 296.2                | 17.4%       |
+| Caixa                                     | R$ 272.32               | 16.0%       |
+| Direcionado - FNE                         | R$ 152.29               | 9.0%        |
+| Outros                                    | R$ 114.69               | 6.8%        |
+| Direcionado - Poupança Rural e Dep. Vista | R$ 91.0                 | 5.4%        |
+| Direcionado - FNO                         | R$ 73.06                | 4.3%        |
+| Direcionado - FCO                         | R$ 35.0                 | 2.1%        |
+| Fungetur                                  | R$ 0.09                 | 0.0%        |
+| Recursos Livres                           | R$ 0.09                 | 0.0%        |
+
+# Desafios e Oportunidades
+
+## Desafios
+
+-   Necessidade de articulação para melhor preenchimento do cadastro das ações não orçamentárias no SIOP e do monitoramento dos resultados com identificação dos beneficiários
+-   Inclusão de novas ações e instituições
+    -   ex. FINEP, ABC
+-   Ausência de ações não orçamentárias vinculadas a fontes multilaterais e internacionais
+
+
+## Oportunidades
+
+-   Ampliar transparência e detalhamento dasações não orçamentárias
+-   Explorar o papel de instituições e fontes não inclusas no cadastro atual
+-   Alinhamento com atributos do PPA.
+-   Integração interinstitucional para padronização e harmonização de dados.
+
+# Alterações SIOP
+
+## Solicitações
+
+-   Inclusão de variáveis de cadastro
+-   Ajuste e inclusão de novo campo para monitoramento
+
+
+## Novos Atributos {.scrollable .custom-font}
+
+| Novas Colunas | Especificação | Descrição |
+|:------------------|:------------------|:----------------------------------|
+| Título | Texto | Nome da Ação Não Orçamentária |
+| Objetivo Específico | Categórica | Vinculação a um objetivo específico do programa relacionado |
+| Entrega | Categórica | Vinculação a uma entrega do programa relacionado |
+| Função | Categórica | Associa a ação a uma função orçamentária, como Saúde, Educação, Agricultura etc. |
+| Subfunção | Categórica | Associa a ação a uma subfunção |
+| Início da Vigência | Data | Indica o início de vigência da ação, especificando a previsão de continuidade. |
+| Término da vigência | Data | Indica o fim de vigência da ação, especificando a previsão de continuidade. |
+| Vigencia indeterminada | Lógico | Indica se o benefício/subsídio tem prazo indeterminado ou não |
+| Fonte dos Dados | Texto | Detalha as fontes primária de dados utilizadas |
+| Tributo | Categórica | Especifica o(s) imposto(s) envolvido(s) ou impactado(s) pela ação (ex.: IRPJ, PIS/COFINS). |
+| Base Legal | Texto | Indica a legislação que regulamenta a ação, como leis, decretos |
+| Responsável pela informação | Texto | Órgão ou unidade responsável por enviar as ações não orçamentárias |
+| Tipo de beneficiário | Categórica | Pessoa Física ou Jurídica |
+| Descrição do beneficiário | Texto | Descrição adicional do benefíciário |
+| Total de beneficiários previstos 1° Ano de PPA | Numérico inteiro | Valor numérico do total de beneficiários diretos |
+| Total de beneficiários previstos 2° Ano de PPA | Numérico inteiro | Valor numérico do total de beneficiários diretos |
+| Total beneficiários previsto 3° Ano de PPA | Numérico inteiro | Valor numérico do total de beneficiários diretos |
+| Total beneficiários previstos 4° Ano de PPA | Numérico inteiro | Valor numérico do total de beneficiários diretos |
+
+## Monitoramento
+
+-   Total de beneficiários
+-   Análise da execução não orçamentária (substitui campo observação)
+-   Possibilidade registrar números negativos nas colunas de valores - caso dos subsídios creditícios negativos
+
+## Obrigado!
+
+::: {style="display: flex; align-items: center;"}
+![](fotodiego.jpeg){style="border-radius: 50%; width: 150px; height: 150px; margin-right: 20px;"}
+:::
+
+**Diego dos Santos Fernandes**  
+Coordenador de Programas Econômicos e de Gestão Governamental  
+CGPEA/SAES/SEPLAN/MPO  
+Email: [diego.fernandes@planejamento.gov.br](mailto:diego.fernandes@planejamento.gov.br)
+
+
+## Agradecimento
+
+::: {style="display: flex; align-items: center;"}
+![](fotodiego.jpeg){style="border-radius: 50%; width: 150px; height: 150px; margin-right: 30px;"}
+<div style="line-height: 3;">
+  <p style="margin: 0; font-size: 32px; font-weight: bold;">Diego dos Santos Fernandes</p>
+  <p style="margin: 0; font-size: 24px;">Coordenador de Programas Econômicos e de Gestão Governamental</p>
+  <p style="margin: 0; font-size: 24px;">CGPEA/SAES/SEPLAN/MPO</p>
+  <p style="margin: 0; font-size: 24px;">Email: <a href="mailto:diego.fernandes@planejamento.gov.br" style="font-size: 24px;">diego.fernandes@planejamento.gov.br</a></p>
+</div>
+:::
+
+
+
