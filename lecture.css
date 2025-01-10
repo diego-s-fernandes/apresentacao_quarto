@@ -1,0 +1,42 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap');
+
+.v-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+.reveal .slide-logo {
+  height: unset !important;
+  width: unset !important;
+  max-width: 300px !important;
+  max-height: 300px !important;
+}
+
+
+.scrollable.custom-font {
+    font-size: 0.8em; /* Ajuste conforme necessário */
+    line-height: 1.2; /* (Opcional) Ajuste o espaçamento entre linhas */
+    overflow-y: auto; /* Mantém o comportamento scrollable */
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap');
+
+h1 {
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 2.5em !important;
+  color: #2c3e50; /* Cor do título */
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif!important;
+    font-weight: 400 !important;
+    font-size: 1.5em!important;
+    color: #34495e; /* Cor do subtítulo */
+}
+
+
